@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "665407293947",
+    "project_id": "gemini-chat-b896b",
+    "storage_bucket": "gemini-chat-b896b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665407293947:android:8887e283af56edc1b7a35e",
+        "android_client_info": {
+          "package_name": "com.example.colorist"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyd4i3eg7oboUaiBG4fsMZnaRuldnLaCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
