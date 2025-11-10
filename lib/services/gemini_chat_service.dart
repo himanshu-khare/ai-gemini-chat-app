@@ -1,11 +1,11 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:colorist_ui/colorist_ui.dart';
 import 'package:firebase_ai/firebase_ai.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../providers/gemini.dart';
+import 'gemini_tools.dart';                                          // Add this import
 
 part 'gemini_chat_service.g.dart';
 
@@ -22,7 +22,6 @@ class GeminiChatService {
     logStateNotifier.logUserText(message);
     final llmMessage = chatStateNotifier.createLlmMessage();
     try {
-      log("message ${message}");
       final response = await chatSession.sendMessage(Content.text(message));
 
       final responseText = response.text;
@@ -30,6 +29,27 @@ class GeminiChatService {
         logStateNotifier.logLlmText(responseText);
         chatStateNotifier.appendToMessage(llmMessage.id, responseText);
       }
+
+      if (response.functionCalls.isNotEmpty) {                       // Add from here
+        final geminiTools = ref.read(geminiToolsProvider);
+        final functionResultResponse = await chatSession.sendMessage(
+          Content.functionResponses([
+            for (final functionCall in response.functionCalls)
+              FunctionResponse(
+                functionCall.name,
+                geminiTools.handleFunctionCall(
+                  functionCall.name,
+                  functionCall.args,
+                ),
+              ),
+          ]),
+        );
+        final responseText = functionResultResponse.text;
+        if (responseText != null) {
+          logStateNotifier.logLlmText(responseText);
+          chatStateNotifier.appendToMessage(llmMessage.id, responseText);
+        }
+      }                                                              // To here.
     } catch (e, st) {
       logStateNotifier.logError(e, st: st);
       chatStateNotifier.appendToMessage(

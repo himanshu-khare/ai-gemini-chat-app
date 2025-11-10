@@ -85,7 +85,7 @@ final class GeminiModelProvider
   }
 }
 
-String _$geminiModelHash() => r'd4aaf971dab76dd9ab7cce803a435f06b4780aaf';
+String _$geminiModelHash() => r'f172c92d9706bbc512831e94d1348372caed4fd9';
 
 @ProviderFor(chatSession)
 const chatSessionProvider = ChatSessionProvider._();
@@ -104,7 +104,7 @@ final class ChatSessionProvider
         argument: null,
         retry: null,
         name: r'chatSessionProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -124,4 +124,4 @@ final class ChatSessionProvider
   }
 }
 
-String _$chatSessionHash() => r'3186bb68ecdde398d2131a7ec49e6f21763b2e80';
+String _$chatSessionHash() => r'fdd5e4ed9d06db9712c9300eeb8a1b54a115b10a';
