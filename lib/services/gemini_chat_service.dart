@@ -30,7 +30,7 @@ class GeminiChatService {
         chatStateNotifier.appendToMessage(llmMessage.id, responseText);
       }
 
-      if (response.functionCalls.isNotEmpty) {                       // Add from here
+      if (response.functionCalls.isNotEmpty) {                      
         final geminiTools = ref.read(geminiToolsProvider);
         final functionResultResponse = await chatSession.sendMessage(
           Content.functionResponses([
@@ -49,7 +49,7 @@ class GeminiChatService {
           logStateNotifier.logLlmText(responseText);
           chatStateNotifier.appendToMessage(llmMessage.id, responseText);
         }
-      }                                                              // To here.
+      }                                                              
     } catch (e, st) {
       logStateNotifier.logError(e, st: st);
       chatStateNotifier.appendToMessage(
