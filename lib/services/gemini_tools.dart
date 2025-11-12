@@ -23,7 +23,7 @@ class GeminiTools {
     Tool.functionDeclarations([setColorFuncDecl]),
   ];
 
-  Map<String, Object?> handleFunctionCall(                           // Add from here
+  Map<String, Object?> handleFunctionCall(                           
     String functionName,
     Map<String, Object?> arguments,
   ) {
@@ -59,7 +59,7 @@ class GeminiTools {
       'success': false,
       'reason': 'Unsupported function call $functionName',
     };
-  }                                                                  // To here.
+  }                                                                 
 }
 
 @Riverpod(keepAlive: true)

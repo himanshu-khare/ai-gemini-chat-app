@@ -5,7 +5,7 @@ import 'package:firebase_ai/firebase_ai.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../providers/gemini.dart';
-import 'gemini_tools.dart';                                          // Add this import
+import 'gemini_tools.dart';                                         
 
 part 'gemini_chat_service.g.dart';
 
@@ -54,7 +54,7 @@ class GeminiChatService {
       logStateNotifier.logError(e, st: st);
       chatStateNotifier.appendToMessage(
         llmMessage.id,
-        "\nI'm sorry, I encountered an error processing your request. "
+        "Encountered an error processing your request. "
         "Please try again.",
       );
     } finally {
