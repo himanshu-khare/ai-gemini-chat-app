@@ -26,7 +26,7 @@ class MainApp extends ConsumerWidget {
             ref.read(geminiChatServiceProvider).sendMessage(text);
           },
         ),
-        loading: () => LoadingScreen(message: 'Initializing Gemini Model...'),
+        loading: () => LoadingScreen(message: 'Initializing Gemini...'),
         error: (err, st) => ErrorScreen(error: err),
       ),
     );
